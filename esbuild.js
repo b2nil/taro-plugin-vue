@@ -6,9 +6,5 @@ require('esbuild').buildSync({
     ".ts": "ts"
   },
   outdir: "dist",
-  // external: [
-  //   "@vitejs/plugin-vue",
-  //   "@vue/compiler-sfc"
-  // ],
   tsconfig: 'tsconfig.json'
 })
