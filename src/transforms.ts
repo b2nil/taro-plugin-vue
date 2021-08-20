@@ -74,7 +74,7 @@ export function transformH5Tags (): NodeTransform {
 
 /**
  * Transform `taro-env` or `taroEnv` prop,
- * and remove node not for the specified platform
+ * and remove node that is not for the specified platform
  * @param platform `'mini' | 'h5'`
  */
 export function transformEnv (platform: 'mini' | 'h5' = 'mini'): NodeTransform {

@@ -25,14 +25,28 @@ export {
   ResolvedOptions
 } from '@vitejs/plugin-vue'
 
+/**
+ * An extension to `@vitejs/plugin-vue`'s `Options` 
+ * with an extra `h5` option.
+ */
 export interface TaroOptions extends Options {
+  /**
+   * Specify whether the target platform is h5 or mini-app.
+   * Set to `true` if the build is targeting h5.
+   * @default undefined
+   */
   h5?: boolean
 }
 
-const genVueOptions = (h5?: boolean): Options => {
+/**
+ * Generate options for `@vitejs/plugin-vue`. 
+ * The generated options is for mini-app by default. 
+ * Set `h5` of the `rawOptions` to `true` 
+ * if the generated options is targeting h5.
+ */
+export const genVueOptions = (rawOptions: TaroOptions): Options => {
   const options: Options = {
     template: {
-      ssr: false,
       compilerOptions: {
         mode: "module",
         optimizeImports: true
@@ -40,33 +54,51 @@ const genVueOptions = (h5?: boolean): Options => {
     }
   }
 
-  if (h5) {
-    options.template!.transformAssetUrls = transformH5AssetUrls
-    options.template!.compilerOptions!.nodeTransforms = [transformH5Tags()]
+  const userCompilerOptions = rawOptions.template?.compilerOptions || {}
+  const userNodeTransforms = userCompilerOptions.nodeTransforms || []
+  const usertransformAssetUrls = rawOptions.template?.transformAssetUrls || {}
+
+  if (rawOptions.h5) {
+    options.template!.transformAssetUrls = {
+      ...transformH5AssetUrls,
+      ...(usertransformAssetUrls as Record<string, string[]>)
+    }
+
+    options.template!.compilerOptions = {
+      ...options.template!.compilerOptions,
+      ...userCompilerOptions,
+      nodeTransforms: [
+        transformH5Tags(),
+        ...userNodeTransforms
+      ]
+    }
+
   } else {
-    options.template!.transformAssetUrls = transformMiniappAssetUrls
-    options.template!.compilerOptions!.isNativeTag = isMiniappNativeTag
+    options.template!.transformAssetUrls = {
+      ...transformMiniappAssetUrls,
+      ...(usertransformAssetUrls as Record<string, string[]>)
+    }
+
+    options.template!.compilerOptions = {
+      ...options.template!.compilerOptions,
+      ...userCompilerOptions,
+      isNativeTag: isMiniappNativeTag
+    }
   }
 
-  return options
+  return {
+    ...(rawOptions as Options),
+    template: options.template
+  }
 }
 
 export default function vuePlugin (rawOptions: TaroOptions = {}): Plugin {
-  const defaultOptions = genVueOptions(rawOptions.h5)
+  const vueOptions = genVueOptions(rawOptions)
 
-  return viteVuePlugin({
-    ...defaultOptions,
-    ...(rawOptions as Options)
-  })
+  return viteVuePlugin(vueOptions)
 }
 
-export {
-  transformEnv,
-  transformH5Tags,
-  isMiniappNativeTag,
-  transformH5AssetUrls,
-  transformMiniappAssetUrls
-} from './transforms'
+export * from './transforms'
 
 // overwrite for cjs require('...')() usage
 export { vuePlugin }
