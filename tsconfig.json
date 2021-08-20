@@ -1,18 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "module": "ES2015",
-    "rootDir": "./src",
-    "outDir": "dist",
+    "target": "ES2019",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "strict": true,
+    "declaration": true,
     "sourceMap": true,
-    "baseUrl": ".",
-    "noImplicitAny": false,
+    "noImplicitOverride": true,
     "noUnusedLocals": true,
-    "removeComments": false,
-    "strictNullChecks": true,
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "moduleResolution": "node"
+    "esModuleInterop": true,
+    "baseUrl": ".",
   },
   "include": [
     "./src"

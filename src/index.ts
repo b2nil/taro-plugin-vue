@@ -15,6 +15,7 @@ import {
   transformH5AssetUrls,
   transformMiniappAssetUrls
 } from './transforms'
+import type { Plugin } from 'vite'
 import type { Options } from '@vitejs/plugin-vue'
 
 export {
@@ -58,6 +59,13 @@ export default function vuePlugin (rawOptions: TaroOptions = {}): Plugin {
     ...(rawOptions as Options)
   })
 }
+
+export {
+  transformH5Tags,
+  isMiniappNativeTag,
+  transformH5AssetUrls,
+  transformMiniappAssetUrls
+} from './transforms'
 
 // overwrite for cjs require('...')() usage
 module.exports = vuePlugin

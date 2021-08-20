@@ -3,17 +3,21 @@
   "version": "0.1.0",
   "description": "A customized @vitejs/plugin-vue for building component libs for Taro",
   "main": "dist/index.js",
+  "types": "types/index.d.ts",
   "repository": "https://github.com/b2nil/taro-plugin-vue.git",
   "author": "b2nil",
   "license": "MIT",
   "private": false,
   "files": [
     "dist",
+    "types",
     "package.json",
     "README.md"
   ],
   "scripts": {
-    "build": "node ./esbuild.js"
+    "dev": "node ./esbuild.js",
+    "build": "yarn dev && yarn build-types",
+    "build-types": "tsc -p . --emitDeclarationOnly --outDir types"
   },
   "peerDependencies": {
     "@vitejs/plugin-vue": "^1.4.0",
