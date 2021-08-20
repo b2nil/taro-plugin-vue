@@ -19,7 +19,7 @@ export interface TaroOptions extends Options {
  * Set `h5` of the `rawOptions` to `true`
  * if the generated options is targeting h5.
  */
-export declare const genVueOptions: (rawOptions: TaroOptions) => Options;
+export declare const genVueOptions: (rawOptions?: TaroOptions) => Options;
 export default function vuePlugin(rawOptions?: TaroOptions): Plugin;
 export * from './transforms';
 export { vuePlugin };
