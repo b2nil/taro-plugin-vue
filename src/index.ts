@@ -61,6 +61,7 @@ export default function vuePlugin (rawOptions: TaroOptions = {}): Plugin {
 }
 
 export {
+  transformEnv,
   transformH5Tags,
   isMiniappNativeTag,
   transformH5AssetUrls,

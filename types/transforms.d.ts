@@ -42,3 +42,9 @@ export declare function isMiniappNativeTag(tag: string): boolean;
  * so that it will be compiled to `resolveComponent('taro-view')`
  */
 export declare function transformH5Tags(): NodeTransform;
+/**
+ * Transform `taro-env` or `taroEnv` prop,
+ * and remove node not for the specified platform
+ * @param platform `'mini' | 'h5'`
+ */
+export declare function transformEnv(platform?: 'mini' | 'h5'): NodeTransform;

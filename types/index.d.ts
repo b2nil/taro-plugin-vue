@@ -5,4 +5,5 @@ export interface TaroOptions extends Options {
     h5?: boolean;
 }
 export default function vuePlugin(rawOptions?: TaroOptions): Plugin;
-export { transformH5Tags, isMiniappNativeTag, transformH5AssetUrls, transformMiniappAssetUrls } from './transforms';
+export { transformEnv, transformH5Tags, isMiniappNativeTag, transformH5AssetUrls, transformMiniappAssetUrls } from './transforms';
+export { vuePlugin };

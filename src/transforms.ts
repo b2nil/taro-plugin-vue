@@ -1,4 +1,4 @@
-import type { NodeTransform } from '@vue/compiler-core'
+import type { NodeTransform, TemplateChildNode } from '@vue/compiler-core'
 
 const nativeComponents = new Set<string>([
   "view", "icon", "progress", "rich-text", "text", "button", "checkbox", "checkbox-group",
@@ -68,6 +68,46 @@ export function transformH5Tags (): NodeTransform {
     ) {
       node.tag = `taro-${node.tag}`
       node.tagType = 1 /* ElementTypes.COMPONENT */
+    }
+  }
+}
+
+/**
+ * Transform `taro-env` or `taroEnv` prop,
+ * and remove node not for the specified platform
+ * @param platform `'mini' | 'h5'`
+ */
+export function transformEnv (platform: 'mini' | 'h5' = 'mini'): NodeTransform {
+
+  const findEnv = (source: string) => {
+    const envReg = /(?<=(taro-env|taroEnv)=")([a-z0-9]+)(?=")/g
+    const found = source.match(envReg)
+    return found !== null ? found[0] : found
+  }
+
+  const isTaroEnv = (propName: string) => {
+    return (propName === 'taro-env' || propName === 'taroEnv')
+  }
+
+  return (node, ctx) => {
+    if (node.type >= 9 && node.type <= 11 /*if, if-branch, v-for*/) {
+      const source = node.type === 11
+        ? node.codegenNode!.loc.source
+        : node.loc.source
+
+      const targetEnv = findEnv(source)
+
+      if (targetEnv && targetEnv !== platform)
+        ctx.removeNode(node as TemplateChildNode)
+
+    } else if (node.type === 1 /* Element */) {
+      node.props.forEach((prop, index) => {
+        if (prop.type === 6 && isTaroEnv(prop.name)) {
+          platform !== prop.value?.content
+            ? ctx.removeNode(node)
+            : node.props.splice(index, 1)
+        }
+      })
     }
   }
 }
