@@ -44,7 +44,7 @@ export interface TaroOptions extends Options {
  * Set `h5` of the `rawOptions` to `true` 
  * if the generated options is targeting h5.
  */
-export const genVueOptions = (rawOptions: TaroOptions): Options => {
+export const genVueOptions = (rawOptions: TaroOptions = {}): Options => {
   const options: Options = {
     template: {
       compilerOptions: {
