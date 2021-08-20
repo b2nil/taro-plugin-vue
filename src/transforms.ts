@@ -61,7 +61,7 @@ export function isMiniappNativeTag (tag: string) {
  * so that it will be compiled to `resolveComponent('taro-view')`
  */
 export function transformH5Tags (): NodeTransform {
-  return (node, ctx) => {
+  return (node) => {
     if (
       node.type === 1 /* NodeTypes.ELEMENT */ &&
       isTaroInternalComponents(node.tag) /* is built-in tag*/
