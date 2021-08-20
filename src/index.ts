@@ -68,5 +68,5 @@ export {
 } from './transforms'
 
 // overwrite for cjs require('...')() usage
-module.exports = vuePlugin
+export { vuePlugin }
 vuePlugin['default'] = vuePlugin
