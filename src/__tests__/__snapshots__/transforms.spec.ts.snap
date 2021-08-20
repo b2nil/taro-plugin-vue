@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`transformEnv should trasnform \`taro-env="h5"\` 1`] = `
+"import { createTextVNode as _createTextVNode, resolveComponent as _resolveComponent, withCtx as _withCtx, createVNode as _createVNode, openBlock as _openBlock, createBlock as _createBlock, createCommentVNode as _createCommentVNode, renderList as _renderList, Fragment as _Fragment, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString } from \\"vue\\"
+
+const _hoisted_1 = /*#__PURE__*/_createTextVNode(\\"taro-env=h5\\")
+const _hoisted_2 = /*#__PURE__*/_createTextVNode(\\"taro-env=h5 v-if\\")
+const _hoisted_3 = /*#__PURE__*/_createTextVNode(\\"taro-env=h5 v-else\\")
+const _hoisted_4 = /*#__PURE__*/_createTextVNode(\\"taroEnv=h5\\")
+
+export function render(_ctx, _cache) {
+  const _component_taro_view = _resolveComponent(\\"taro-view\\")
+
+  return (_openBlock(), _createElementBlock(_Fragment, null, [
+    _createVNode(_component_taro_view, null, {
+      default: _withCtx(() => [
+        _hoisted_1
+      ]),
+      _: 1 /* STABLE */
+    }),
+    (1!==2)
+      ? (_openBlock(), _createBlock(_component_taro_view, { key: 0 }, {
+          default: _withCtx(() => [
+            _hoisted_2
+          ]),
+          _: 1 /* STABLE */
+        }))
+      : (_openBlock(), _createBlock(_component_taro_view, { key: 1 }, {
+          default: _withCtx(() => [
+            _hoisted_3
+          ]),
+          _: 1 /* STABLE */
+        })),
+    _createVNode(_component_taro_view, null, {
+      default: _withCtx(() => [
+        _hoisted_4
+      ]),
+      _: 1 /* STABLE */
+    }),
+    (_openBlock(), _createElementBlock(_Fragment, null, _renderList([0, 1], (i) => {
+      return _createVNode(_component_taro_view, { key: i }, {
+        default: _withCtx(() => [
+          _createTextVNode(\\"taroEnv=h5-v-for-\\" + _toDisplayString(i), 1 /* TEXT */)
+        ]),
+        _: 2 /* DYNAMIC */
+      }, 1024 /* DYNAMIC_SLOTS */)
+    }), 64 /* STABLE_FRAGMENT */))
+  ], 64 /* STABLE_FRAGMENT */))
+}"
+`;
+
+exports[`transformEnv should trasnform \`taro-env="mini"\` 1`] = `
+"import { renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, createElementVNode as _createElementVNode, createCommentVNode as _createCommentVNode, toDisplayString as _toDisplayString } from \\"vue\\"
+
+const _hoisted_1 = /*#__PURE__*/_createElementVNode(\\"view\\", null, \\"taro-env=mini\\", -1 /* HOISTED */)
+const _hoisted_2 = { key: 0 }
+const _hoisted_3 = { key: 1 }
+const _hoisted_4 = /*#__PURE__*/_createElementVNode(\\"view\\", null, \\"taroEnv=mini\\", -1 /* HOISTED */)
+
+export function render(_ctx, _cache) {
+  return (_openBlock(), _createElementBlock(_Fragment, null, [
+    _hoisted_1,
+    (1!==2)
+      ? (_openBlock(), _createElementBlock(\\"view\\", _hoisted_2, \\"taro-env=mini v-if\\"))
+      : (_openBlock(), _createElementBlock(\\"view\\", _hoisted_3, \\"taro-env=mini v-else\\")),
+    _hoisted_4,
+    (_openBlock(), _createElementBlock(_Fragment, null, _renderList([0, 1], (i) => {
+      return _createElementVNode(\\"view\\", { key: i }, \\"taroEnv=mini-v-for-\\" + _toDisplayString(i), 1 /* TEXT */)
+    }), 64 /* STABLE_FRAGMENT */))
+  ], 64 /* STABLE_FRAGMENT */))
+}"
+`;

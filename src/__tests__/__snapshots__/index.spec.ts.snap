@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`genVueOptions should generate default h5 options 1`] = `
+Object {
+  "h5": true,
+  "template": Object {
+    "compilerOptions": Object {
+      "mode": "module",
+      "nodeTransforms": Array [
+        [Function],
+      ],
+      "optimizeImports": true,
+    },
+    "transformAssetUrls": Object {
+      "audio": Array [
+        "src",
+      ],
+      "cover-image": Array [
+        "src",
+      ],
+      "image": Array [
+        "src",
+      ],
+      "live-player": Array [
+        "src",
+      ],
+      "source": Array [
+        "src",
+      ],
+      "taro-audio": Array [
+        "src",
+      ],
+      "taro-cover-image": Array [
+        "src",
+      ],
+      "taro-image": Array [
+        "src",
+      ],
+      "taro-live-player": Array [
+        "src",
+      ],
+      "taro-source": Array [
+        "src",
+      ],
+      "taro-video": Array [
+        "src",
+        "poster",
+      ],
+      "video": Array [
+        "src",
+        "poster",
+      ],
+    },
+  },
+}
+`;
+
+exports[`genVueOptions should generate default mini-app options 1`] = `
+Object {
+  "template": Object {
+    "compilerOptions": Object {
+      "isNativeTag": [Function],
+      "mode": "module",
+      "optimizeImports": true,
+    },
+    "transformAssetUrls": Object {
+      "audio": Array [
+        "src",
+      ],
+      "cover-image": Array [
+        "src",
+      ],
+      "image": Array [
+        "src",
+      ],
+      "live-player": Array [
+        "src",
+      ],
+      "source": Array [
+        "src",
+      ],
+      "video": Array [
+        "src",
+        "poster",
+      ],
+    },
+  },
+}
+`;
+
+exports[`genVueOptions should merge user passed h5 options 1`] = `
+Object {
+  "h5": true,
+  "template": Object {
+    "compilerOptions": Object {
+      "mode": "module",
+      "nodeTransforms": Array [
+        [Function],
+        [Function],
+      ],
+      "optimizeImports": true,
+    },
+    "transformAssetUrls": Object {
+      "audio": Array [
+        "src",
+      ],
+      "cover-image": Array [
+        "src",
+      ],
+      "image": Array [
+        "src",
+      ],
+      "live-player": Array [
+        "src",
+      ],
+      "source": Array [
+        "src",
+      ],
+      "taro-audio": Array [
+        "src",
+      ],
+      "taro-cover-image": Array [
+        "src",
+      ],
+      "taro-image": Array [
+        "src",
+      ],
+      "taro-live-player": Array [
+        "src",
+      ],
+      "taro-source": Array [
+        "src",
+      ],
+      "taro-video": Array [
+        "src",
+        "poster",
+      ],
+      "video": Array [
+        "src",
+        "poster",
+      ],
+    },
+  },
+}
+`;
+
+exports[`genVueOptions should merge user passed mini-app options 1`] = `
+Object {
+  "template": Object {
+    "compilerOptions": Object {
+      "isNativeTag": [Function],
+      "mode": "module",
+      "nodeTransforms": Array [
+        [Function],
+      ],
+      "optimizeImports": true,
+    },
+    "transformAssetUrls": Object {
+      "audio": Array [
+        "src",
+      ],
+      "cover-image": Array [
+        "src",
+      ],
+      "image": Array [
+        "src",
+      ],
+      "live-player": Array [
+        "src",
+      ],
+      "source": Array [
+        "src",
+      ],
+      "video": Array [
+        "src",
+        "poster",
+      ],
+    },
+  },
+}
+`;
+
+exports[`vuePlugin 1`] = `
+Object {
+  "config": [Function],
+  "configResolved": [Function],
+  "configureServer": [Function],
+  "handleHotUpdate": [Function],
+  "load": [Function],
+  "name": "vite:vue",
+  "resolveId": [Function],
+  "transform": [Function],
+}
+`;
