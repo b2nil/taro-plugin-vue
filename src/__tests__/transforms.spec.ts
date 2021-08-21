@@ -94,6 +94,11 @@ describe('transformEnv', () => {
     })
     expect(resultH5.code).not.toMatch('taro-env=mini')
     expect(resultH5.code).not.toMatch('taroEnv=mini')
+    expect(resultH5.code).toMatch('taro-env=h5')
+    expect(resultH5.code).toMatch('taro-env=h5 v-if')
+    expect(resultH5.code).toMatch('taro-env=h5 v-else')
+    expect(resultH5.code).toMatch('taroEnv=h5')
+    expect(resultH5.code).toMatch('taroEnv=h5-v-for-')
     expect(resultH5.code).toMatchSnapshot()
   })
 
@@ -108,6 +113,11 @@ describe('transformEnv', () => {
 
     expect(resultMini.code).not.toMatch('taro-env=h5')
     expect(resultMini.code).not.toMatch('taroEnv=h5')
+    expect(resultMini.code).toMatch('taro-env=mini')
+    expect(resultMini.code).toMatch('taro-env=mini v-if')
+    expect(resultMini.code).toMatch('taro-env=mini v-else')
+    expect(resultMini.code).toMatch('taroEnv=mini')
+    expect(resultMini.code).toMatch('taroEnv=mini-v-for-')
     expect(resultMini.code).toMatchSnapshot()
   })
 })
