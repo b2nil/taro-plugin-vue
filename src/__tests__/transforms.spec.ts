@@ -8,11 +8,9 @@ import {
 
 import {
   parse,
-  // SFCTemplateBlock,
   compileTemplate,
   SFCTemplateCompileOptions
 } from '@vue/compiler-sfc'
-import { trackSlotScopes } from '@vue/compiler-core'
 
 function compile (opts: Omit<SFCTemplateCompileOptions, 'id' | 'filename'>) {
   return compileTemplate({
