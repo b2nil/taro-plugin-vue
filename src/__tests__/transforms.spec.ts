@@ -1,6 +1,7 @@
 import {
   isMiniappNativeTag,
   transformEnv,
+  transformClick,
   transformH5Tags,
   transformH5AssetUrls,
   transformMiniappAssetUrls
@@ -47,6 +48,28 @@ describe('transformH5Tags', () => {
     expect(result.code).not.toMatch(`createElementBlock("${tag}")`)
     expect(result.code).toMatch(`createBlock(_component_taro_${tag.replace(/-/g, '_',)})`)
     expect(result.code).toMatch(`resolveComponent("taro-${tag}")`)
+  })
+})
+
+describe('tansformClick', () => {
+  test.concurrent(`should transform onClick to onTap `, async () => {
+    const result = compile({
+      source: `<view @click="handleClick" />`,
+      compilerOptions: {
+        nodeTransforms: [transformClick]
+      }
+    })
+    expect(result.code).toMatch('onTap')
+    expect(result.code).not.toMatch('onClick')
+
+    const result2 = compile({
+      source: `<div @click="handleClick" />`,
+      compilerOptions: {
+        nodeTransforms: [transformClick]
+      }
+    })
+    expect(result2.code).toMatch('onClick')
+    expect(result2.code).not.toMatch('onTap')
   })
 })
 

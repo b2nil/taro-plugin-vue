@@ -111,3 +111,20 @@ export function transformEnv (platform: 'mini' | 'h5' = 'mini'): NodeTransform {
     }
   }
 }
+
+/**
+ * Transform `onClick` to `onTap` on native tags.
+ */
+export const transformClick: NodeTransform = (node) => {
+  if (node.type === 1 && nativeComponents.has(node.tag)) {
+    for (const prop of node.props) {
+      if (prop.type === 7
+        && prop.name === 'on'
+        && prop.arg?.type === 4
+        && prop.arg?.content === 'click'
+      ) {
+        prop.arg!.content = 'tap'
+      }
+    }
+  }
+}

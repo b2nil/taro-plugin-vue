@@ -48,3 +48,7 @@ export declare function transformH5Tags(): NodeTransform;
  * @param platform `'mini' | 'h5'`
  */
 export declare function transformEnv(platform?: 'mini' | 'h5'): NodeTransform;
+/**
+ * Transform `onClick` to `onTap` on native tags.
+ */
+export declare const transformClick: NodeTransform;
