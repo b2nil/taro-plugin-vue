@@ -1,6 +1,6 @@
 {
   "name": "taro-plugin-vue",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "A customized @vitejs/plugin-vue for building component libs for Taro",
   "main": "dist/index.js",
   "types": "types/index.d.ts",
