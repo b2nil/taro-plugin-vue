@@ -1,7 +1,7 @@
 import type { NodeTransform } from '@vue/compiler-core';
 /**
  * Transform mini-app asset urls.
- * From: https://github.com/NervJS/taro/blob/next/packages/taro-mini-runner/src/webpack/vue3.ts#L43-L50
+ * @see https://github.com/NervJS/taro/blob/next/packages/taro-mini-runner/src/webpack/vue3.ts#L43-L50
  */
 export declare const transformMiniappAssetUrls: {
     video: string[];
@@ -13,7 +13,7 @@ export declare const transformMiniappAssetUrls: {
 };
 /**
  * Transform H5 asset urls.
- * From: https://github.com/NervJS/taro/blob/next/packages/taro-webpack-runner/src/config/vue3.ts#L49-L62
+ * @see https://github.com/NervJS/taro/blob/next/packages/taro-webpack-runner/src/config/vue3.ts#L49-L62
  */
 export declare const transformH5AssetUrls: {
     video: string[];
@@ -30,16 +30,15 @@ export declare const transformH5AssetUrls: {
     'taro-cover-image': string[];
 };
 /**
- * Declare native mini-app tags,
- * so that miniapp native components
+ * Declare native mini-app tags, so that miniapp native components
  * such as `picker`, `swiper`, `scroll-view` and etc.
- * can be resolved.
+ * will be treated as native tags, thus not to be resolved as components.
  */
 export declare function isMiniappNativeTag(tag: string): boolean;
 /**
  * Transform tags for h5 components.
- * For example, `<view />` will be transformed to `<taro-view />`,
- * so that it will be compiled to `resolveComponent('taro-view')`
+ * For example, tag `view` will be transformed to `taro-view`,
+ * so that it will be compiled to `resolveComponent('taro-view')`.
  */
 export declare function transformH5Tags(): NodeTransform;
 /**
