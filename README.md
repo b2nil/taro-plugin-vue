@@ -24,7 +24,7 @@ yarn add -D taro-plugin-vue @vitejs/plugin-vue
 
 ```ts
 // vite.config.js
-const vuePlugin = require('taro-plugin-vue')
+const { vuePlugin } = require('taro-plugin-vue')
 
 export default {
   plugins: [
